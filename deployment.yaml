@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-app
+  name: my-app-deployment
 spec:
-  replicas: 2
+  replicas: 2  # Number of pods
   selector:
     matchLabels:
-      app: web-app
+      app: my-app
   template:
     metadata:
       labels:
-        app: web-app
+        app: my-app
     spec:
       containers:
-      - name: web-app
-        image: your-roll-number/web-app:latest
-        ports:
-        - containerPort: 5000
-        env:
-        - name: FLASK_ENV
-          value: production
+        - name: my-app
+          image: my-app:latest  # Change if using a remote repository
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DATABASE_URL
+              value: "postgresql://user:password@postgres-service:5432/mydatabase"
