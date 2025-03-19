@@ -1,3 +1,10 @@
 #!/bin/bash
+
+# Stop if there's an error
+set -e
+
+# Run the tests inside the container
 echo "Running tests..."
-# TODO: Add commands to run unit and integration tests
+docker run --rm my-app pytest
+
+echo "Tests complete!"
